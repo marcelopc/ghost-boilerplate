@@ -1,5 +1,5 @@
 const SequelizeAuto = require('sequelize-auto');
-const config = require('./config/config.js');
+const config = require('../config/config.js');
 
 const auto = new SequelizeAuto(config.database.development.database, config.database.development.username, config.database.development.password, {
   camelCaseForFileName: true

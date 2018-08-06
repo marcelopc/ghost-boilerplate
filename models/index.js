@@ -1,21 +1,11 @@
-// const config = require('../config/config.js');
-// const Sequelize = require('sequelize');
-
-
-
-
-
-
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 
-// import { DbConnection } from '../interfaces/DbConnectionInterface';
-
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
-let config = require(path.resolve(`${__dirname}/../config/config.js`)).database[env];
+const config = require('../config/config.js').database[env];
+const associate = require('./associate')
 
 
 let db = null;
@@ -38,7 +28,6 @@ if (!db) {
         pool: config.pool
     });
 
-
     fs.readdirSync(__dirname)
         .filter((file) => {
             const fileSlice = file.slice(-3);
@@ -46,15 +35,14 @@ if (!db) {
         })
         .forEach((file) => {
             const model = sequelize.import(path.join(__dirname, file));
-            db[model['name']] = model;
+            // db[model['name']] = model;
+            db[file.split('.')[0]] = model;
         });
 
     db['sequelize'] = sequelize;
+
+
  
 }
 
-module.exports = function(){
-
-	return db;
-
-}
+module.exports = db

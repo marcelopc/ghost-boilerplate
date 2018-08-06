@@ -32,11 +32,13 @@ gulp.task('clean', () => {
         .pipe(clean());
 });
 
+gulp.task('wait', async ()=>{
+    await new Promise(resolve => setTimeout(resolve, 3000))
+});
 
-gulp.task('watch', ['clean'], () => {
+gulp.task('watch', ['clean', 'babel'], () => {
     return gulp.watch(['src/**/*.js', 'src/**/*.json'], ['babel']);
 });
 
 gulp.task('default', ['watch']);
 
-// --delay 5

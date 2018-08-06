@@ -1,0 +1,60 @@
+// const config = require('../config/config.js');
+// const Sequelize = require('sequelize');
+
+
+
+
+
+
+
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+
+// import { DbConnection } from '../interfaces/DbConnectionInterface';
+
+const basename = path.basename(module.filename);
+const env = process.env.NODE_ENV || 'development';
+let config = require(path.resolve(`${__dirname}/../config/config.js`)).database[env];
+
+
+let db = null;
+
+if (!db) {
+
+    db = {};
+
+// //     const operatorsAliases = {
+// //         $in: Sequelize.Op.in
+// //     };
+
+// //     config = Object.assign({operatorsAliases}, config);
+
+    const sequelize = new Sequelize(config.database, config.username, config.password, {
+        host: config.host,
+        dialect: config.dialect,
+        operatorsAliases: config.operatorsAliases,
+        logging: config.logging,
+        pool: config.pool
+    });
+
+
+    fs.readdirSync(__dirname)
+        .filter((file) => {
+            const fileSlice = file.slice(-3);
+            return (file.indexOf('.') !== 0) && (file !== basename) && ((fileSlice === '.js') || (fileSlice === '.js'));
+        })
+        .forEach((file) => {
+            const model = sequelize.import(path.join(__dirname, file));
+            db[model['name']] = model;
+        });
+
+    db['sequelize'] = sequelize;
+ 
+}
+
+module.exports = function(){
+
+	return db;
+
+}

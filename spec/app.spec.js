@@ -10,7 +10,7 @@ describe("Server", ()=>{
     });
 
     afterAll((done)=>{
-        done()
+        done() 
     });
     
     describe("GET /", ()=>{
@@ -33,6 +33,8 @@ describe("Server", ()=>{
             expect(json.pass).toBe('dATRCIbuUriqW+8p6CW2OZoSkxxHJt1jyTiB8S7ng+Q=');
 
         })
+
+        
 
 
     })

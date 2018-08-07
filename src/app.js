@@ -6,7 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
-
+const helmet = require('helmet');
 
 const index = require('./routes/index');
 
@@ -17,6 +17,7 @@ app.engine('html', es6Renderer);
 app.set('views', 'views');
 app.set('view engine', 'html');
 
+app.use(helmet());
 app.use(favicon(path.join(__dirname, 'public', '../../public/images/favicon/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());

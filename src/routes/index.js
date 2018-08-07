@@ -5,6 +5,11 @@ const path = require('path');
 const config = require('../../config/config.js');
 const lang = require('../middleware/lang');
 const cors = require('cors');
+const apicache = require('apicache');
+const fetch = require('node-fetch');
+
+
+const auth = require('../util/auth.js');
 
 
 router.get('/', lang, function(req, res) {

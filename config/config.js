@@ -2,7 +2,7 @@ module.exports = {
     database: {
       development: {
         username: "root",
-        password: "",
+        password: "vader",
         database: "database_dev",
         host: "127.0.0.1",
         dialect: "mysql",
@@ -47,10 +47,10 @@ module.exports = {
       }
     }, 
     server: { 
-      secret: '', 
-      jwtSecret: '',
-      url: '',
-      nome: ''
+      secret: 'vader', 
+      jwtSecret: 'vader',
+      url: 'http://127.0.0.1',
+      nome: 'Ghost'
     }
   } 
 

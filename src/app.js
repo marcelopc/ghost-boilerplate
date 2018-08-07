@@ -9,6 +9,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 
 const index = require('./routes/index');
+const validConfig = require('./util/validConfig.js');
 
 const app = express();
    

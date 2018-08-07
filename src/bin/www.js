@@ -4,56 +4,38 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('../util/debug');
-var http = require('http');
+const app = require('../app');
+const debug = require('../util/debug');
+const validConfig = require('../util/validConfig.js');
+const http = require('http');
+var server;
 
-/**
- * Get port from environment and store in Express.
- */
 
-var port = normalizePort(process.env.PORT || '8080');
-app.set('port', port);
+debug('server', '-------------- INIT -------------------');
 
-/**
- * Create HTTP server.
- */
+try{
+  validConfig();
 
-var server = http.createServer(app);
+  let port = normalizePort(process.env.PORT || '8080');
+  app.set('port', port);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+  server = http.createServer(app);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+}catch(error){
+  debug('error', error);
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
 
-  return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
 
 function onError(error) {
+
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -75,12 +57,24 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('server', 'Listening on ' + bind, 'server');
 }
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+
+    return false;
+  }

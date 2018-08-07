@@ -1,11 +1,20 @@
 {
   "name": "expressboilerplatees6templateengine",
   "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
   "private": true,
+  "main": "",
   "scripts": {
     "start": "PORT=3000 NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 2 ./dist/bin/www | gulp",
     "test": "PORT=3030 NODE_ENV=development DEBUG=server nodemon ./bin/www",
-    "prodi": "nodemon ./bin/www"
+    "prodi": "nodemon ./bin/www",
+    "clusters": "",
+    "build": "",
+    "dev": "",
+    "gulp": "",
+    "coverage": ""
   },
   "dependencies": {
     "body-parser": "^1.18.3",

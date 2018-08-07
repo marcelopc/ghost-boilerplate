@@ -36,8 +36,8 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', function() {
-    return gulp.src('./src/*.js')
-        .pipe(jshint({ "esversion":6 }))
+    return gulp.src('./src/**/*.js')
+        .pipe(jshint({ "esversion":6, "node": true}))
         .pipe(jshint.reporter(stylehint));
 });
 

@@ -39,12 +39,12 @@ if (!db) {
             db[file.split('.')[0]] = model;
         });
 
-    db['sequelize'] = sequelize;
+    db.sequelize = sequelize;
     
     db.associate = (cb)=>{
-        if(!cb) return
+        if(!cb) return;
         cb();
-    }
+    };
 }
 
-module.exports = db
+module.exports = db;

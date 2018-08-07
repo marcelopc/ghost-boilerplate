@@ -17,11 +17,11 @@ exports.mapValueFieldNames = function(dataValues, fields, Model) {
 
   return values;
 
-}
+};
 
 exports.removeFieldUndefineds = function(object) {
 
 	Object.keys(object).forEach(key => object[key] === undefined ? delete object[key] : '');
-	return object
+	return object;
 
-}
+};

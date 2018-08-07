@@ -7,36 +7,36 @@ exports.newError = function(code, message, arrayErros) {
 	erro.arrayErros = arrayErros;
 	return erro;
 
-}
+};
 
 exports.fieldExistent = function(arrayErros) {
 
 	if(!arrayErros.length)
-		return
+		return;
 
 	return arrayErros.map((item)=>{
 		return {
 			erro: `${item.value} já existe`,
 			path: item.path.replace('_UNIQUE', ''),
 			value: item.value
-		}
-	})
+		};
+	});
 
-}
+};
 
 exports.fieldNotNull = function(arrayErros) {
 
 	if(!arrayErros.length)
-		return
+		return;
 
 	return arrayErros.map((item)=>{
 		return {
 			erro: `${item.path} não informado`,
 			path: item.path
-		}
-	})
+		};
+	});
 
-}
+};
 
 exports.validateFieldExistent = function(erro) {
 
@@ -46,7 +46,7 @@ exports.validateFieldExistent = function(erro) {
 		return false;
 	}
 
-}
+};
 
 exports.validateFieldNotNull = function(erro) {
 
@@ -56,7 +56,7 @@ exports.validateFieldNotNull = function(erro) {
 		return false;
 	}
 
-}
+};
 
 exports.validateForeignKeyInvalid = function(erro) {
 
@@ -66,7 +66,7 @@ exports.validateForeignKeyInvalid = function(erro) {
 		return false;
 	}
 
-}
+};
 
 exports.validateValueInvalid = function(erro) {
 
@@ -76,14 +76,14 @@ exports.validateValueInvalid = function(erro) {
 		return false;
 	}
 
-}
+};
 
 exports.uniqueConstraintError = function(erro) {
-	console.log('uniqueConstraintError')
+	console.log('uniqueConstraintError');
 	if(erro.name === "SequelizeUniqueConstraintError"){
 		return true;
 	}else{
 		return false;
 	}
 
-}
+};

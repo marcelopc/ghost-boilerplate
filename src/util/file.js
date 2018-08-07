@@ -52,4 +52,4 @@ exports.moveFile = function(oldPath, newPath, callback) {
 
         readStream.pipe(writeStream);
     }
-}
+};

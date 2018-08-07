@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3000 NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 3 ./dist/bin/www | gulp",
+    "start": "PORT=3000 NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 2 ./dist/bin/www | gulp",
     "test": "PORT=3030 NODE_ENV=development DEBUG=server nodemon ./bin/www",
     "prodi": "nodemon ./bin/www"
   },

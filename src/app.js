@@ -38,7 +38,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   if(!err.status){
-  	var err = new Error('Internal Server Error');
+  	let err = new Error('Internal Server Error');
   	err.status = 501;
   }
  

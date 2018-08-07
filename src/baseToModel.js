@@ -8,7 +8,7 @@ const auto = new SequelizeAuto(config.database.development.database, config.data
 auto.run(function (err) {
   if (err) {
   	throw err;
-  };
+  }
 
   console.log(auto.tables); // table list
   console.log(auto.foreignKeys); // foreign key list

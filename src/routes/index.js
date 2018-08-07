@@ -21,9 +21,9 @@ router.get('/', lang, function(req, res) {
 
 router.get('/api', function(req, res) {
   res.send({
-    message: 'API Work'
-  });
-  
+    message: auth.createToken({teste:'darhvader'}, {expiresIn: '12h'}),
+    pass: auth.hashPass('darhvader')
+  });  
 });
 
 module.exports = router;

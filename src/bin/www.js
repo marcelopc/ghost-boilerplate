@@ -1,15 +1,9 @@
-#!/usr/bin/env node
+import app from '../app';
+import debug from '../util/debug';
+import validConfig from '../util/validConfig.js';
+import {createServer} from 'http';
 
-/**
- * Module dependencies.
- */
-
-const app = require('../app');
-const debug = require('../util/debug');
-const validConfig = require('../util/validConfig.js');
-const http = require('http');
 var server;
-
 
 debug('server', '-------------- INIT -------------------');
 
@@ -19,18 +13,14 @@ try{
   let port = normalizePort(process.env.PORT || '8080');
   app.set('port', port);
 
-  server = http.createServer(app);
+  server = createServer(app);
 
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
 
-
-
 }catch(error){
   debug('error', error);
-
-
 }
 
 

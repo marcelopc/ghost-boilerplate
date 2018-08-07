@@ -1,6 +1,9 @@
 const gulp = require("gulp");
 const clean = require('gulp-clean');
 const babel = require("gulp-babel");
+const jshint = require('gulp-jshint');
+const stylehint = require('jshint-stylish')
+
 
 gulp.task("babel", ['clean'], function () {
   return gulp.src(["src/app.js", "src/**/*.js"])
@@ -32,12 +35,18 @@ gulp.task('clean', () => {
         .pipe(clean());
 });
 
+gulp.task('lint', function() {
+    return gulp.src('./src/*.js')
+        .pipe(jshint({ "esversion":6 }))
+        .pipe(jshint.reporter(stylehint));
+});
+
 gulp.task('wait', async ()=>{
     await new Promise(resolve => setTimeout(resolve, 3000))
 });
 
-gulp.task('watch', ['clean', 'babel'], () => {
-    return gulp.watch(['src/**/*.js', 'src/**/*.json'], ['babel']);
+gulp.task('watch', ['clean', 'lint', 'babel'], () => {
+    return gulp.watch(['src/**/*.js', 'src/**/*.json'], ['lint', 'babel']);
 });
 
 gulp.task('default', ['watch']);

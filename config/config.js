@@ -58,7 +58,7 @@ module.exports = {
       secret: 'vader', 
       jwtSecret: 'vader',
       url: 'http://localhost',
-      port: '3030',
+      port: '3050',
       nome: 'Ghost'
     },
     production: {

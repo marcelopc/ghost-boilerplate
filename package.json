@@ -8,10 +8,10 @@
   "main": "",
   "scripts": {
     "start": "npm install && NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 2 ./dist/bin/www | gulp start",
-    "test": "NODE_ENV=test node ./dist/bin/www.js | NODE_ENV=test jasmine",
+    "test": "npm run build &&  NODE_ENV=test node ./dist/bin/www.js | NODE_ENV=test jasmine",
     "prodi": "nodemon ./bin/www",
     "clusters": "",
-    "build": "gulp",
+    "build": "gulp babel",
     "dev": "",
     "coverage": "nyc --extension .js --include './**/*.js' --reporter html npm run test"
   },

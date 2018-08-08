@@ -5,6 +5,9 @@ const jshint = require('gulp-jshint');
 const stylehint = require('jshint-stylish');
 const run = require('gulp-run');
 
+var ext_replace = require('gulp-ext-replace');
+var replace = require('gulp-string-replace');
+var conflict = require("gulp-conflict");
 
 
 gulp.task("babel", ['clean'], function () {
@@ -35,3 +38,12 @@ gulp.task('watch', ['clean', 'lint', 'babel'], () => {
 
 gulp.task('start', ['watch']);
 
+gulp.task('create-teste', () => {
+    return gulp.src('./dist/**/*.js')
+    .pipe(ext_replace('.spec.js'))
+    .pipe(conflict('./spec', {defaultChoice: 'n'}))
+    .pipe(replace(new RegExp('.|\n', 'g'), '', {logs: { enabled: false }}))
+    .pipe(gulp.dest('./spec'))
+
+
+});

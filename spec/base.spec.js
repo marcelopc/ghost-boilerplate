@@ -1,7 +1,3 @@
-jasmine.getEnv().addReporter(require('./support/reporter'));
-
-
-
 describe("Base", ()=>{
 
     beforeAll(()=>{

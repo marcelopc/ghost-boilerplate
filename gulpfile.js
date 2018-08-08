@@ -2,7 +2,9 @@ const gulp = require("gulp");
 const clean = require('gulp-clean');
 const babel = require("gulp-babel");
 const jshint = require('gulp-jshint');
-const stylehint = require('jshint-stylish')
+const stylehint = require('jshint-stylish');
+const run = require('gulp-run');
+
 
 
 gulp.task("babel", ['clean'], function () {
@@ -31,5 +33,5 @@ gulp.task('watch', ['clean', 'lint', 'babel'], () => {
     return gulp.watch(['src/**/*.js', 'src/**/*.json'], ['lint', 'babel']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('start', ['watch']);
 

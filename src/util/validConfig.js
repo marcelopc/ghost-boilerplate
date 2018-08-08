@@ -12,10 +12,10 @@ module.exports = ()=>{
         config.database[env].dialect &&
         config.database[env].pool)) throw error.newError(500, `É necessário preencher o config database [${env}]`);
     
-    if(!(config.server.secret && 
-        config.server.jwtSecret &&
-        config.server.nome  &&
-        config.server.url)) throw error.newError(500, `É necessário preencher o config server`);
+    if(!(config.server[env].secret && 
+        config.server[env].jwtSecret &&
+        config.server[env].nome  &&
+        config.server[env].url)) throw error.newError(500, `É necessário preencher o config server`);
 
 };
 

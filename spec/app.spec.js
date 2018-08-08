@@ -1,7 +1,9 @@
-const fetch = require('node-fetch');
 
 jasmine.getEnv().addReporter(require('./support/reporter'));
+const config = require('../config/config.js');
+const env = process.env.NODE_ENV || 'test';
 
+const fetch = require('node-fetch');
 
 describe("Server", ()=>{
 
@@ -14,7 +16,7 @@ describe("Server", ()=>{
     describe("GET /", ()=>{
         var data = {};
         beforeAll((done)=>{
-            fetch('http://127.0.0.1:3000/api')
+            fetch(`${config.server[env].url}:${config.server[env].port}/api`)
             .then((res) =>{
                 data = res;
                 done();

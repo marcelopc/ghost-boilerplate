@@ -12,7 +12,7 @@ const index = require('./routes/index');
 const validConfig = require('./util/validConfig.js');
 
 const app = express();
-   
+    
   
 app.engine('html', es6Renderer);
 app.set('views', 'views');
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
-
+ 
 app.use('/', index);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

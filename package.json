@@ -13,7 +13,7 @@
     "clusters": "",
     "build": "gulp",
     "dev": "",
-    "coverage": "nyc --extension .js --include './**/*.js' --reporter html npm test"
+    "coverage": "nyc --extension .js --include './**/*.js' --reporter html npm run test"
   },
   "dependencies": {
     "apicache": "^1.2.3",

@@ -1,6 +1,7 @@
 
 /dist
 /config/config.js
+/coverage
 
 # Logs
 logs

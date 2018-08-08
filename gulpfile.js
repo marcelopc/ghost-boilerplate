@@ -11,24 +11,6 @@ gulp.task("babel", ['clean'], function () {
     .pipe(gulp.dest("dist"));
 });
 
-// const tsProject = ts.createProject('tsconfig.json');
-
-// gulp.task('scripts', ['static'], () => {
-
-//     const tsResult = tsProject.src()
-//         .pipe(tsProject());
-
-//     return tsResult.js
-//         .pipe(gulp.dest('dist'));
-
-// });
-
-// gulp.task('static', ['clean'], () => {
-//     return gulp
-//         .src(['src/**/*.json'])
-//         .pipe(gulp.dest('dist'));
-// });
-
 gulp.task('clean', () => {
     return gulp
         .src('dist')
@@ -43,7 +25,7 @@ gulp.task('lint', function() {
 
 gulp.task('wait', async ()=>{
     await new Promise(resolve => setTimeout(resolve, 3000))
-});
+}); 
 
 gulp.task('watch', ['clean', 'lint', 'babel'], () => {
     return gulp.watch(['src/**/*.js', 'src/**/*.json'], ['lint', 'babel']);

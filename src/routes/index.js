@@ -26,4 +26,8 @@ router.get('/api', function(req, res) {
   });  
 });
 
+router.head('/api', function(req, res) {
+  res.send(200)
+});
+
 module.exports = router;

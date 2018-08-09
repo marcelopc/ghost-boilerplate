@@ -13,7 +13,7 @@
     "clusters": "",
     "babel": "gulp babel",
     "dev": "",
-    "model": "NODE_ENV=development node ./dist/baseToModel.js",
+    "model": "NODE_ENV=development node ./dist/util/baseToModel.js",
     "coverage": "nyc --extension .js --include './**/*.js' --clean -x 'gulpfile.js' -x './dist/bin/www.js' --reporter html npm run test"
   },
   "dependencies": {

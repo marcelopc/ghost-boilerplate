@@ -1,5 +1,5 @@
 import SequelizeAuto from 'sequelize-auto';
-import { database } from '../config/config.js';
+import { database } from '../../config/config.js';
 
 const env = process.env.NODE_ENV;
 

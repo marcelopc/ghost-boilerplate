@@ -1,7 +1,9 @@
-const SequelizeAuto = require('sequelize-auto');
-const config = require('../config/config.js');
+import SequelizeAuto from 'sequelize-auto';
+import { database } from '../config/config.js';
 
-const auto = new SequelizeAuto(config.database.development.database, config.database.development.username, config.database.development.password, {
+const env = process.env.NODE_ENV;
+
+const auto = new SequelizeAuto(database[env].database, database[env].username, database[env].password, {
   camelCaseForFileName: true
 });
 
@@ -10,6 +12,7 @@ auto.run(function (err) {
   	throw err;
   }
 
-  console.log(auto.tables); // table list
-  console.log(auto.foreignKeys); // foreign key list
+  console.log(auto.tables);
+  console.log(auto.foreignKeys);
 });
+

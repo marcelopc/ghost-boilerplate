@@ -11,8 +11,7 @@ const helmet = require('helmet');
 const index = require('./routes/index');
 const validConfig = require('./util/validConfig.js');
 
-const app = express();
-    
+const app = express();    
   
 app.engine('html', es6Renderer);
 app.set('views', 'views');

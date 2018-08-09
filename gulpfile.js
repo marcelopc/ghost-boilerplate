@@ -9,7 +9,6 @@ var ext_replace = require('gulp-ext-replace');
 var replace = require('gulp-string-replace');
 var conflict = require("gulp-conflict");
 
-
 gulp.task("babel", ['clean'], function () {
   return gulp.src(["src/app.js", "src/**/*.js"])
     .pipe(babel())
@@ -44,6 +43,4 @@ gulp.task('create-teste', () => {
     .pipe(conflict('./spec', {defaultChoice: 'n'}))
     .pipe(replace(new RegExp('.|\n', 'g'), '', {logs: { enabled: false }}))
     .pipe(gulp.dest('./spec'))
-
-
 });

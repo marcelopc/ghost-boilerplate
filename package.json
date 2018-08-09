@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "author": "",
-  "license": "ISC",
+  "license": "",
   "private": true,
   "main": "",
   "scripts": {
     "start": "npm install && NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 2 ./dist/bin/www | gulp start",
     "test": "npm run build &&  NODE_ENV=test node ./dist/bin/www.js | NODE_ENV=test jasmine",
-    "prodi": "nodemon ./bin/www",
+    "prodi": "",
     "clusters": "",
-    "build": "gulp babel",
+    "babel": "gulp babel",
     "dev": "",
     "coverage": "nyc --extension .js --include './**/*.js' --clean -x 'gulpfile.js' -x './dist/bin/www.js' --reporter html npm run test"
   },

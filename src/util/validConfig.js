@@ -10,8 +10,8 @@ module.exports = {
         if(!config.server[env]) throw error.newError(500, `É necessário informar o config server`);
             
 
-        this.database(config.database[env])
-        this.server(config.server[env])
+        this.database(config.database[env]);
+        this.server(config.server[env]);
 
     },
 
@@ -36,7 +36,7 @@ module.exports = {
     }
 
 
-}
+};
 
 
 

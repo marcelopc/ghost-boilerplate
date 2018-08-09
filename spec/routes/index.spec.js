@@ -1,6 +1,6 @@
 
 const config = require('../../config/config.js');
-const env = process.env.NODE_ENV || 'test';
+const env = process.env.NODE_ENV;
 
 const fetch = require('node-fetch');
 

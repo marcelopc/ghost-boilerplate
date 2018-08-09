@@ -9,9 +9,7 @@ const apicache = require('apicache');
 const fetch = require('node-fetch');
 const debug = require('../util/debug.js');
 
-
 const auth = require('../util/auth.js');
-
 
 router.get('/', lang, function(req, res) {
 
@@ -20,7 +18,7 @@ router.get('/', lang, function(req, res) {
 });
 
 router.head('/api', function(req, res) {
-  res.sendStatus(200)
+  res.sendStatus(200);
 });
 
 

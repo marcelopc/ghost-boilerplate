@@ -1,24 +1,24 @@
 'use strict';
 
-exports.newError = function(code = 400, message = "Erro interno no Servidor", arrayErros) {
+export function newError(code = 400, message = "Erro interno no Servidor", arrayErros = []) {
 
-	if(typeof code === 'string') code = parseInt(code)
+	if(typeof code === 'string') code = parseInt(code);
 
 	let erro = new Error(message);
 	erro.code = code;
 	erro.arrayErros = arrayErros;
 	return erro;
 
-};
+}
 
-exports.fieldExistent = function(arrayErros) {
+export function fieldExistent(arrayErros) {
 
 	if(!arrayErros || !arrayErros.length)
 		return;
 
 	return arrayErros.map((item)=>{
-		if(!item.value) item.value = 'Generico'
-		if(!item.path) item.path = 'Generico'
+		if(!item.value) item.value = 'Generico';
+		if(!item.path) item.path = 'Generico';
 
 		return {
 			erro: `${item.value} já existe`,
@@ -27,9 +27,9 @@ exports.fieldExistent = function(arrayErros) {
 		};
 	});
 
-};
+}
 
-exports.fieldNotNull = function(arrayErros) {
+export function fieldNotNull(arrayErros) {
 
 	if(!arrayErros || !arrayErros.length)
 		return;
@@ -41,11 +41,11 @@ exports.fieldNotNull = function(arrayErros) {
 		};
 	});
 
-};
+}
 
-exports.validateFieldExistent = function(erro) {
+export function validateFieldExistent(erro) {
 
-	if(!erro) return false
+	if(!erro) return false;
 
 	if(erro.parent && erro.parent.errno === 1062){
 		return true;
@@ -53,11 +53,11 @@ exports.validateFieldExistent = function(erro) {
 		return false;
 	}
 
-};
+}
 
-exports.validateFieldNotNull = function(erro) {
+export function validateFieldNotNull(erro) {
 
-	if(!erro) return false
+	if(!erro) return false;
 
 	if(erro.name === "SequelizeValidationError"){
 		return true;
@@ -65,11 +65,11 @@ exports.validateFieldNotNull = function(erro) {
 		return false;
 	}
 
-};
+}
 
-exports.validateForeignKeyInvalid = function(erro) {
+export function validateForeignKeyInvalid(erro) {
 
-	if(!erro) return false
+	if(!erro) return false;
 
 	if(erro.name === "SequelizeForeignKeyConstraintError"){
 		return true;
@@ -77,11 +77,11 @@ exports.validateForeignKeyInvalid = function(erro) {
 		return false;
 	}
 
-};
+}
 
-exports.validateValueInvalid = function(erro) {
+export function validateValueInvalid(erro) {
 
-	if(!erro) return false
+	if(!erro) return false;
 
 	if(erro.name === "SequelizeDatabaseError"){
 		return true;
@@ -89,11 +89,11 @@ exports.validateValueInvalid = function(erro) {
 		return false;
 	}
 
-};
+}
 
-exports.uniqueConstraintError = function(erro) {
+export function uniqueConstraintError(erro) {
 
-	if(!erro) return false
+	if(!erro) return false;
 
 	if(erro.name === "SequelizeUniqueConstraintError"){
 		return true;
@@ -101,4 +101,4 @@ exports.uniqueConstraintError = function(erro) {
 		return false;
 	}
 
-};
+}

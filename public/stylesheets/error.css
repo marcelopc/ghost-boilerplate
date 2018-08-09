@@ -1,0 +1,32 @@
+body {
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #00B7FF;
+}
+
+
+.error{
+	text-align: center;
+	font-size: 3em;
+	color: #263238;
+	padding: 0px;
+	margin: 0px;
+}
+
+.error > span{
+	font-size: 2em;
+	margin: 0px 10px 0px 10px;
+}
+
+
+.error-message{
+	text-align: center;
+    font-size: 4em;
+    color: #5522b1;
+    padding: 0px;
+    margin: 0px;
+
+}

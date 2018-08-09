@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Error Page</title>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="ghosttemplate">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Error ${error.status}</title>
+    <meta name="description" content="Error - ghosttemplate">
+
+    <link rel="icon" href="images/icons/favicon.ico">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="stylesheet" type="text/css" href="./stylesheets/error.css">
+    
+
+
 </head>
 <body>
-    <h1>Error Page</h1>
-    <h1>${error.status}</h1>
-    <h1>${error.message}</h1>
+    
+    <h1 class="error">Error<span>${error.status}</span></h1>
+    <h2 class="error-message">${error.message}</h2>
 </body>
 </html>

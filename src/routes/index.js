@@ -7,6 +7,7 @@ const lang = require('../middleware/lang');
 const cors = require('cors');
 const apicache = require('apicache');
 const fetch = require('node-fetch');
+const debug = require('../util/debug.js');
 
 
 const auth = require('../util/auth.js');
@@ -18,16 +19,17 @@ router.get('/', lang, function(req, res) {
   
 });
 
+router.head('/api', function(req, res) {
+  res.sendStatus(200)
+});
+
 
 router.get('/api', function(req, res) {
   res.send({
-    message: auth.createToken({teste:'darhvader'}, {expiresIn: '12h'}),
-    pass: auth.hashPass('darhvader')
+    message: 'Work'
   });  
 });
 
-router.head('/api', function(req, res) {
-  res.send(200)
-});
+
 
 module.exports = router;

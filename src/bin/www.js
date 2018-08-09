@@ -11,7 +11,7 @@ debug('server', '-------------- INIT -------------------');
 try{
 
   const env = process.env.NODE_ENV;
-  validConfig();
+  validConfig.config(env, config);
 
   var port = normalizePort(config.server[env].port || '8080');
   app.set('port', port);

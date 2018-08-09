@@ -1,6 +1,8 @@
 'use strict';
 
-exports.newError = function(code, message, arrayErros) {
+exports.newError = function(code = 400, message = "Erro interno no Servidor", arrayErros) {
+
+	if(typeof code === 'string') code = parseInt(code)
 
 	let erro = new Error(message);
 	erro.code = code;
@@ -11,10 +13,13 @@ exports.newError = function(code, message, arrayErros) {
 
 exports.fieldExistent = function(arrayErros) {
 
-	if(!arrayErros.length)
+	if(!arrayErros || !arrayErros.length)
 		return;
 
 	return arrayErros.map((item)=>{
+		if(!item.value) item.value = 'Generico'
+		if(!item.path) item.path = 'Generico'
+
 		return {
 			erro: `${item.value} já existe`,
 			path: item.path.replace('_UNIQUE', ''),
@@ -26,7 +31,7 @@ exports.fieldExistent = function(arrayErros) {
 
 exports.fieldNotNull = function(arrayErros) {
 
-	if(!arrayErros.length)
+	if(!arrayErros || !arrayErros.length)
 		return;
 
 	return arrayErros.map((item)=>{
@@ -40,6 +45,8 @@ exports.fieldNotNull = function(arrayErros) {
 
 exports.validateFieldExistent = function(erro) {
 
+	if(!erro) return false
+
 	if(erro.parent && erro.parent.errno === 1062){
 		return true;
 	}else{
@@ -49,6 +56,8 @@ exports.validateFieldExistent = function(erro) {
 };
 
 exports.validateFieldNotNull = function(erro) {
+
+	if(!erro) return false
 
 	if(erro.name === "SequelizeValidationError"){
 		return true;
@@ -60,6 +69,8 @@ exports.validateFieldNotNull = function(erro) {
 
 exports.validateForeignKeyInvalid = function(erro) {
 
+	if(!erro) return false
+
 	if(erro.name === "SequelizeForeignKeyConstraintError"){
 		return true;
 	}else{
@@ -70,6 +81,8 @@ exports.validateForeignKeyInvalid = function(erro) {
 
 exports.validateValueInvalid = function(erro) {
 
+	if(!erro) return false
+
 	if(erro.name === "SequelizeDatabaseError"){
 		return true;
 	}else{
@@ -79,7 +92,9 @@ exports.validateValueInvalid = function(erro) {
 };
 
 exports.uniqueConstraintError = function(erro) {
-	console.log('uniqueConstraintError');
+
+	if(!erro) return false
+
 	if(erro.name === "SequelizeUniqueConstraintError"){
 		return true;
 	}else{

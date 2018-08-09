@@ -12,7 +12,11 @@ auto.run(function (err) {
   	throw err;
   }
 
-  console.log(auto.tables);
-  console.log(auto.foreignKeys);
+
+  console.log('---------------- DB TO MODEL ----------------')
+  console.log(`BASE: ${database[env].database}`)
+  console.log(`ENV: ${env}`)
+  console.log('------------------ SUCESS ------------------')
+
 });
 

@@ -1,9 +1,10 @@
-var debug = require('debug');
+import debug from 'debug';
 
-module.exports = (tag, message)=>{
+export default (tag, message)=>{
 
-    if(!tag) return;
-    if(!message) return;
+    if(!tag) return false;
+    if(!message) return false;
 
-    return debug(tag)(message);
+    debug(tag)(message)
+    return true;
 };

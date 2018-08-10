@@ -1,20 +1,20 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const error = require('../util/error.js');
+import { sign } from 'jsonwebtoken';
+import { createHmac } from 'crypto';
+import { newError } from '../util/error.js';
 
-exports.hashPass = function(pass, secret) {
+export function hashPass(pass, secret) {
 
-    if(!pass) throw error.newError(400, 'É necessário informar o password');
-    if(!secret) throw error.newError(400, 'É necessário informar o secret');
-	return crypto.createHmac('sha256', secret).update(pass).digest('base64');
+    if(!pass) throw newError(400, 'É necessário informar o password');
+    if(!secret) throw newError(400, 'É necessário informar o secret');
+	return createHmac('sha256', secret).update(pass).digest('base64');
 
-};
+}
 
-exports.createToken = function(payload, jwtSecret, options = {}) {
+export function createToken(payload, jwtSecret, options = {}) {
 
-    if(!jwtSecret) throw error.newError(500, 'É necessário informar o jwtSecret');
+    if(!jwtSecret) throw newError(500, 'É necessário informar o jwtSecret');
 
-    return jwt.sign(payload, jwtSecret);
+    return sign(payload, jwtSecret);
 
-};
+}
 

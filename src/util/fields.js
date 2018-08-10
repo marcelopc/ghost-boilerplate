@@ -1,6 +1,6 @@
 'use strict';
 
-exports.mapValueFieldNames = function(dataValues, fields, Model) {
+export function mapValueFieldNames(dataValues, fields, Model) {
 	
   const values = {};
 
@@ -17,11 +17,11 @@ exports.mapValueFieldNames = function(dataValues, fields, Model) {
 
   return values;
 
-};
+}
 
-exports.removeFieldUndefineds = function(object) {
+export function removeFieldUndefineds(object) {
 
 	Object.keys(object).forEach(key => object[key] === undefined ? delete object[key] : '');
 	return object;
 
-};
+}

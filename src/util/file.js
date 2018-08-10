@@ -1,8 +1,8 @@
 'use strict';
 
-const fs = require('fs');
+import fs from 'fs';
 
-exports.moveFile = function(oldPath, newPath, callback) {
+export function moveFile(oldPath, newPath, callback) {
 
     let dir = newPath.substring(0, newPath.lastIndexOf('/'));
 
@@ -52,4 +52,4 @@ exports.moveFile = function(oldPath, newPath, callback) {
 
         readStream.pipe(writeStream);
     }
-};
+}

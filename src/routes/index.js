@@ -1,15 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const fs = require("fs");
-const path = require('path');
-const config = require('../../config/config.js');
-const lang = require('../middleware/lang');
-const cors = require('cors');
-const apicache = require('apicache');
-const fetch = require('node-fetch');
-const debug = require('../util/debug.js');
+import { Router } from 'express';
 
-const auth = require('../util/auth.js');
+import fs from "fs";
+import path from 'path';
+import cors from 'cors';
+import apicache from 'apicache';
+import fetch from 'node-fetch';
+
+import config from '../../config/config.js';
+import debug from '../util/debug.js';
+import auth from '../util/auth.js';
+import lang from '../rest/middleware/lang.js';
+
+const router = Router();
 
 router.get('/', lang, function(req, res) {
 
@@ -21,8 +23,7 @@ router.head('/api', function(req, res) {
   res.sendStatus(200);
 });
 
-
-router.get('/api', function(req, res) {
+router.get('/graph', function(req, res) {
   res.send({
     message: 'Work'
   });  
@@ -30,4 +31,4 @@ router.get('/api', function(req, res) {
 
 
 
-module.exports = router;
+export default router;

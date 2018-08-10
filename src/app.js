@@ -1,34 +1,27 @@
-const express = require('express');
-const es6Renderer = require('express-es6-template-engine');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const compression = require('compression');
-const helmet = require('helmet');
+import express from 'express';
+import es6Renderer from 'express-es6-template-engine';
+import { join } from 'path';
+import cookieParser from 'cookie-parser';
+import { json, urlencoded } from 'body-parser';
+import compression from 'compression';
+import helmet from 'helmet';
 
-const index = require('./routes/index');
-const validConfig = require('./util/validConfig.js');
+import index from './routes/index';
 
 const app = express();    
-  
 app.engine('html', es6Renderer);
 app.set('views', 'views');
 app.set('view engine', 'html');
 
 app.use(helmet());
-app.use(favicon(path.join(__dirname, 'public', '../../public/images/favicon/favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(join(__dirname, '../public')));
 app.use(compression());
-
  
 app.use('/', index);
-// catch 404 and forward to error handler
+
 app.use(function(req, res, next) {
   let err = new Error('Not Found');
   err.status = 404;
@@ -47,6 +40,6 @@ app.use(function(err, req, res, next) {
   res.render('error', {locals: {error: err}});
 });
 
-module.exports = app;
+export default app;
 
 

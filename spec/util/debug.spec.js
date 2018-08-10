@@ -18,14 +18,18 @@ describe("Util | Debug", ()=>{
 
         it('Instância', ()=>{
 
-            expect('function').toEqual(typeof debug);
+            expect('function').toEqual(typeof debug.default);
+            expect(debug.default('tag', 'message')).toBeTruthy();
+
 
         })
 
         it('Debug null param', ()=>{
 
-            expect(debug('Tag')).toBeUndefined();
-            expect(debug()).toBeUndefined();
+
+            expect(debug.default()).toBeFalsy();
+            expect(debug.default('Tag')).toBeFalsy();
+
 
 
         })

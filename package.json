@@ -7,8 +7,8 @@
   "private": true,
   "main": "",
   "scripts": {
-    "start": "npm install && NODE_ENV=development DEBUG=server,info,warn,error nodemon --delay 2 ./dist/bin/www | gulp start",
-    "test": "npm run build &&  NODE_ENV=test node ./dist/bin/www.js | NODE_ENV=test jasmine",
+    "start": "npm install && NODE_ENV=development DEBUG=server,info,warn,error,dev nodemon --delay 2 ./dist/bin/www | gulp start",
+    "test": "npm run babel &&  NODE_ENV=test node ./dist/bin/www.js | NODE_ENV=test jasmine",
     "prodi": "",
     "clusters": "",
     "babel": "gulp babel",
@@ -31,7 +31,6 @@
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "mime": "^2.3.1",
-    "morgan": "~1.9.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "node-fetch": "^2.2.0",

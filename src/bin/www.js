@@ -1,15 +1,13 @@
 import app from '../app';
 import debug from '../util/debug';
-import validConfig from '../util/validConfig.js';
+import * as validConfig from '../util/validConfig.js';
 import {createServer} from 'http';
 
 import config from '../../config/config.js';
 var server;
 
 debug('server', '-------------- INIT -------------------');
-
 try{
-
   const env = process.env.NODE_ENV;
   validConfig.config(env, config);
 

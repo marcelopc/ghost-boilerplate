@@ -31,11 +31,11 @@ router.head('/api', function(req, res) {
   res.sendStatus(200);
 });
 
-router.use('/graphql', expressGraphQl({
-    schema: schema,
-    graphiql: env === 'development',
-    context: req['context']
-}))
+// router.use('/graphql', expressGraphQl({
+//     schema: schema,
+//     graphiql: env === 'development',
+//     context: req['context']
+// }))
 
 
 

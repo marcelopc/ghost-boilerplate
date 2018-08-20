@@ -8,7 +8,7 @@ var server;
 
 debug('server', '-------------- INIT -------------------');
 try{
-  const env = process.env.NODE_ENV;
+  const env = process.env.NODE_ENV || 'development';
   validConfig.config(env, config);
 
   var port = normalizePort(config.server[env].port || '8080');
